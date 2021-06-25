@@ -15,8 +15,6 @@
             "Princeton",
             "Brown University",
             "Duke University"
-
-            file.write("\"" + variable + "\",")
         ];
         $( "#schools" ).autocomplete({
             source: availableSchools
@@ -30,7 +28,7 @@
     <!--<input id="tags" />-->
     <form name="UniversityData" method="POST" data-netlify="true">
   <p>
-    <label for= "schools">Schools: <input id="schools"type="text" name="name" /></label>
+    <label for= "schools">Schools: <input id="schools" type="text" name="name" /></label>
   </p>
   <p>
     <label>Your Email: <input type="email" name="email" /></label>
