@@ -10,14 +10,16 @@
     <link rel="stylesheet" href="/resources/demos/style.css" />
     <script>
     $(function() {
-        var availableTags = [
+        var availableSchools = [
             "Harvard University",
             "Princeton",
             "Brown University",
             "Duke University"
+
+            file.write("\"" + variable + "\",")
         ];
-        $( "#tags" ).autocomplete({
-            source: availableTags
+        $( "#schools" ).autocomplete({
+            source: availableSchools
         });
     });
     </script>
@@ -25,8 +27,27 @@
 <body>
 
 <div class="ui-widget">
-    <label for="tags">Tags: </label>
-    <input id="tags" />
+    <!--<input id="tags" />-->
+    <form name="UniversityData" method="POST" data-netlify="true">
+  <p>
+    <label for= "schools">Schools: <input id="schools"type="text" name="name" /></label>
+  </p>
+  <p>
+    <label>Your Email: <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <label>Your Role: <select name="role[]" multiple>
+      <option value="leader">Student</option>
+      <option value="follower">Academic</option>
+    </select></label>
+  </p>
+  <p>
+    <label>Anything else: <textarea name="message"></textarea></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
+</form>
 </div>
 
 
