@@ -31,16 +31,28 @@
 	<script src="https://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
 <!--===============================================================================================-->
 <script src="js/schools.js"></script>
+<script src="js/tags.js"></script>
+
+<script>
+function validateForm() {
+  let x = document.forms["UniversityData"]["topSchool"].value;
+  if (x != "Harvard University") {
+    alert("Sorry! Please fix school name.");
+    return false;
+  }
+}
+</script>
 
 </head>
 <body>
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" name="UniversityData" method="POST" data-netlify="true">
+			<form class="contact100-form validate-form" name="UniversityData" onsubmit="return validateForm()" method="POST" data-netlify="true">
 				<span class="contact100-form-title">
 					CoinDesk Blockchain University Rankings Survey 2021
 				</span>
+				<span class="contact100-form-subheading"> Methodology </span>
 					<label class="label-input100" for="first-name">Your Name *</label>
 					<div class="wrap-input100 rs1 validate-input">
 						<input id="first-name" class="input100" type="text" name="first-name" placeholder="First name">
@@ -57,11 +69,54 @@
 						<span class="focus-input100"></span>
 					</div>
 
+					<label class="label-input100" for="class">How would you describe yourself? *</label>
+					<div class="wrap-dropdown validate-input">
+						<select id="class" name="class">
+							<option value="" disabled selected hidden>Choose Role...</option>
+						  <option value="student">Current Student</option>
+						  <option value="academic">Practicing academic (i.e. university faculty/staff, researcher, etc.)</option>
+						  <option value="industry">Industry stakeholder (i.e. project founder, employee, speaker, etc.)</option>
+						</select>
+						<span class="focus-input100"></span>
+					</div>
+
+					<label class="label-input100" for="class">How familiar are you with blockchain technology? *</label>
+					<div class="wrap-dropdown validate-input">
+						<div class = "horizontalSpread">
+							<span> I've never heard of blockchain </span>
+							<span> . . . </span>
+							<span> I'm an expert on blockchain </span>
+						</div>
+						<div class = "horizontalSpread">
+							<span><input type="radio" name="familiarity" value="1">&nbsp; 1 &nbsp;</span>
+							<span><input type="radio" name="familiarity" value="2">&nbsp; 2 &nbsp;</span>
+							<span><input type="radio" name="familiarity" value="3">&nbsp; 3 &nbsp;</span>
+							<span><input type="radio" name="familiarity" value="4">&nbsp; 4 &nbsp;</span>
+							<span><input type="radio" name="familiarity" value="5">&nbsp; 5 &nbsp;</span>
+						</div>
+						<span class="focus-input100"></span>
+					</div>
+
 					<label class="label-input100" for="schools">What is the top school for blockchain? *</label>
+					<p><i>To ensure consistent entries, please begin typing the full school name and select from the dropdown.
+						Other spellings/abbreviations will not be accepted.</i>
+					</p>
+
 					<div class="wrap-input100 validate-input">
 						<input id="schools" class="input100" type="text" name="topSchool" placeholder="Eg. Antarctica University" />
 						<span class="focus-input100"></span>
 					</div>
+
+					<div class="input-container">
+			      <input type="text" id="input" placeholder="Enter tags . . .">
+			      <button id="add-button" type="button">Add</button>
+			    </div>
+
+			    <div class="tag-container">
+			      <!-- <span class="tag">oh my God <span class="remove-tag">&#10006;</span></span>
+			                <span class="tag">second tag <span class="remove-tag">&#10006;</span></span>
+			                <span class="tag">tag3 <span class="remove-tag">&#10006;</span></span> -->
+			    </div>
 
 					<label class="label-input100" for="message">Anything Else?</label>
 					<div class="wrap-input100">

@@ -182,6 +182,10 @@
 
 		 ];
 		 $( "#schools" ).autocomplete({
-				 source: availableSchools
+				 //source: availableSchools
+         source: function(request, response) {
+            var results = $.ui.autocomplete.filter(availableSchools, request.term);
+            response(results.slice(0, 10));
+        }
 		 });
  });
