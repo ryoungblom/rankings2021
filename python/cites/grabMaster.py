@@ -1,7 +1,7 @@
 import pandas as pd
 from master import masterU
 
-file2 = open('newNames.txt', 'w')
+file2 = open('newNamesMod.txt', 'w')
 
 schoolDemo = []
 
@@ -9,37 +9,65 @@ file2.writelines("[\n")
 
 for x in masterU:
 
+    print ("SCHOOL: " + x)
+
+    currentList = []
+
     if (x == "IuB" or x == "UCL" or x == "UCLA" or x == "UCSD" or x == "ethZurich" or x == "files" or x == "kuLeuven" or x == "uWashington" or x == "warwick"):
-        print (x)
+        #print (x)
         str = '(\"' + x + '\", \"' + x + '\"),\n'
-        file2.writelines(str)
+        #file2.writelines(str)
 
     else:
         pubFile = '../../../drive/' + x + '.xls'
 
         paperData = pd.read_excel(pubFile, usecols="W")
 
-        rowX = paperData.iloc[0]
+        #print(paperData)
 
-        address = rowX.loc['Addresses']
+        for index, row in paperData.iterrows():
 
-        indexStart = address.find(']')
-        index = address.find(',', indexStart)
+            address = row['Addresses']
 
-        schoolNameSub = address[(indexStart+2):index]
+        #rowX = paperData.iloc[0]
 
-        str = '(\"' + x + '\", \"' + schoolNameSub + '\"),\n'
+        #address = rowX.loc['Addresses']
 
-        print (str)
+            indexStart = address.find(']')
+            indexEnd = address.find(',', indexStart)
 
-        file2.writelines(str)
+            schoolNameSub = address[(indexStart+2):indexEnd]
+
+            if schoolNameSub not in currentList:
+                #string = '(\"' + x + '\", \"' + currentList + '\"),\n'
+                currentList.append(schoolNameSub)
+                str = schoolNameSub
+
+            #str = '(\"' + x + '\", \"' + schoolNameSub + '\"),\n'
+
+        file2.write('(\"' + x + '\", [')
+        varBool = True
+
+        for all in currentList:
+            if (varBool == False):
+                file2.write(', ')
+                file2.write('\"' + all + '\"')
+            else:
+                file2.write('\"' + all + '\"')
+                varBool = False
+
+        file2.write(']), \n')
+        #str = '(\"' + x + '\", ' + currentList + '),\n'
+
+            #print (str)
+
+        #file2.writelines(str)
 
         #print ("SCHOOL: " + x + " DATA: " + rowX.loc['Addresses'])
-
+        print (str)
 
 
 file2.writelines("]")
-#file1.close()
 file2.close()
 
 
