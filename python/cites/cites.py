@@ -2,10 +2,11 @@ import pandas as pd
 from pprint import pprint
 from schools import schoolList
 
-for x in schoolLis:
+for x in schoolList:
 
     schoolFileName = x[0]
-    substring = x[1]
+    substringTuple = x[1]
+    schoolName = x[1][0]
 
     pubFile = '../../../drive/' + schoolFileName + '.xls'
     citeFile = '../../../drive/' + schoolFileName + '-cite.xls'
@@ -24,6 +25,8 @@ for x in schoolLis:
     for index, row in paperData.iterrows():
         #find first author name
 
+        breaker = False
+
         authorNames = row['Authors']
         anIndex = authorNames.find(',')
         authorNameSub = authorNames[0:(anIndex)]
@@ -31,11 +34,14 @@ for x in schoolLis:
         address = row['Addresses']
         indexStart = address.find(authorNameSub)
         index = address.find(']', indexStart)
-        schoolIndex = address.find(substring)
+        for nameList in substringTuple:
+            if breaker == False:
+                schoolIndex = address.find(nameList)
 
-        if ((index+2) == schoolIndex):
-            articleTitles.append(row['Article Title'])
-            authorAddress.append(row['Addresses'])
+                if ((index+2) == schoolIndex):
+                    articleTitles.append(row['Article Title'])
+                    authorAddress.append(row['Addresses'])
+                    breaker = True
         #print(row['Article Title'])
         #print ("x")
 
@@ -49,8 +55,8 @@ for x in schoolLis:
             totalCites = totalCites + numCite
 
     #print(citeData.head())
-    print (substring + " papers: " + str(totalPubs))
-    print(substring + " cites: " + str(totalCites))
+    print (schoolName + " papers: " + str(totalPubs))
+    print(schoolName + " cites: " + str(totalCites))
     #print(paperData.head(entries))
     #pprint(articleTitles[0])
     #pprint (authorAddress[0])

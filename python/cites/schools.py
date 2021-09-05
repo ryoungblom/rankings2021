@@ -1,4 +1,4 @@
-[
+schoolList = [
 ("ICL", ["Imperial Coll London", "Imperial Coll"]),
 ("KTH", ["Royal Inst Technol", "Royal Inst Technol KTH", "KTH Royal Inst Technol"]),
 ("LoyolaM", ["Loyola Marymount Univ"]),
@@ -51,7 +51,7 @@
 ("freiburg", ["Univ Freiburg"]),
 ("fsu", ["Florida State Univ"]),
 ("fudan", ["Fudan Univ"]),
-("geneva", ["Univ Geneva""]),
+("geneva", ["Univ Geneva"]),
 ("georgetown", ["Georgetown Univ"]),
 ("georgiaTech", ["Georgia Inst Technol"]),
 ("ghent", ["Univ Ghent"]),
@@ -64,7 +64,7 @@
 ("hkPoly", ["Hong Kong Polytech Univ", "Hong Kong Polytech Univ Hung Hom"]),
 ("hkuScienceTech", ["Hong Kong Univ Sci & Technol", "HKUST"]),
 ("hongKong", ["Univ Hong Kong"]),
-("hopkins", ["Johns Hopkins Univ", "Johns Hopkins Carey Business Sch", "Johns Hopkins Bloomberg Sch Publ Hlth", "Johns Hopkins Appl Phys Lab", "Datalytica LLC"]),
+("hopkins", ["Johns Hopkins Univ", "Johns Hopkins Carey Business Sch", "Johns Hopkins Bloomberg Sch Publ Hlth", "Johns Hopkins Appl Phys Lab"]),
 ("houston", ["Univ Houston"]),
 ("huBerlin", ["Humboldt Univ", "Weizenbaum Inst Networked Soc"]),
 ("icahn", ["Icahn Sch Med Mt Sinai"]),
